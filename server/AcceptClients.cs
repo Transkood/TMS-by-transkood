@@ -3,6 +3,7 @@ using System.IO;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using Microsoft.EntityFrameworkCore;
 
 class MyTcpListener
 {
@@ -47,6 +48,10 @@ class MyTcpListener
           // декодируем
           data = System.Text.Encoding.Json.GetString(bytes, 0, i);
           Console.WriteLine("coords: {0}", data);
+          
+          db.Coords.Add(coord.Latitude);
+          db.Coords.Add(coord.Longitude);
+          db.SaveChanges();
         }
         // Если вам больше не нужно соединение, грохните его с помощью client.Close();
       }
