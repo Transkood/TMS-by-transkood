@@ -27,6 +27,7 @@ namespace GetLocationProperty
                     coord.Latitude,
                     coord.Longitude);
                     string json = JsonSerializer.Serialize<Coo>(coord.Latitude, coord.Latitude);
+                
             }
             else
             {
